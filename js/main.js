@@ -403,16 +403,23 @@ $(document).ready(function(){
 ]`;
 
 
-/*Tomar en cuenta que es importante realizar la concatenacion de manera correcta un espacio, o algun detalle podria hacer que no se renderice correctamente o que se pierda la propiedad de algun atributo */
 
+/* Variable para ir guardando en un array los cursos comprados y poder realizar calculos y la suma. */
+
+
+/* Cast de string a JSON */
     var cursosJSON = jQuery.parseJSON(cursosArray);
 
+/*Tomar en cuenta que es importante realizar la concatenacion de manera correcta un espacio, o algun detalle podria hacer que no se renderice correctamente o que se pierda la propiedad de algun atributo */
     var recorrer = function () {
 
         var cursosHTML = '';
         for (var i = 0; i < cursosJSON.length; i++) {
             
-            cursosHTML += `<div class="box `+cursosJSON[i].categoria+`">\
+            cursosHTML = `<div class="box ` + cursosJSON[i].categoria +`">\
+                <input type="hidden" id="`+ cursosJSON[i].id+`" readonly>\
+                <input type="hidden" class="video" value="`+cursosJSON[i].video+`" readonly>\
+
                 <div class="image">\
                     <img src="` + cursosJSON[i].ruta + `" alt="">\
                 </div >\
@@ -421,8 +428,8 @@ $(document).ready(function(){
                 <div class="subInfo" >\
                     <strong class="price">$`+ cursosJSON[i].precio + `</strong>\
                 <div>\
-                        <button class="cursebtn"><i class="fas fa-eye"> </i> Chequear</button>\
-                        <button class="cursebtn2"><i class="fas fa-shopping-cart"> </i> Comprar</button>\
+                        <button data-video="` + cursosJSON[i].video +`" class="cursebtn"><i class="fas fa-eye"> </i> Chequear</button>\
+                        <button data-id="`+ cursosJSON[i].id + `" class="cursebtn2"><i class="fas fa-shopping-cart"> </i> Comprar</button>\
                     </div >\
                 </div >\
                <div class="stars">\
@@ -435,14 +442,19 @@ $(document).ready(function(){
             </div >\
           </div >`;
 
-                    console.log('se esta recorriendo: ' + cursosJSON[i].id);
+            $('#image-container').append(cursosHTML);
+
+           // console.log('se esta recorriendo: ' + cursosJSON[i].id);
         }
 
-        $('#image-container').html(cursosHTML);
+      // otra manera de renderiza los elementos como html pero cursosHTML deberia convertirse en un acumulador +=
+      //  $('#image-container').html(cursosHTML);
 
     }
 
     recorrer();
+
+    /* Despues de renderizar todos los elementos del JSON se agrega las funcionalidades para  colapsar el menu y hacer scroll*/
 
     $('#menu').click(function () {
         $(this).toggleClass('fa-times');
@@ -507,5 +519,76 @@ $(document).ready(function(){
         $(this).addClass('button-active').siblings().removeClass('button-active');
 
     });
+
+/*Se realiza funcionalidad para mostrar o remover una ventana modal para visulaizar el primer video de los cursos*/
+
+
+    $( '.cursebtn').on('click',function () {
+
+        //Da undefined por que se intenta acceder a nodos que fueron renderizados despues de haber cargado el dom, por eso es importante en lugar de usar .html usar el metodo add para que se agreguen los nodos
+        //  console.log($(this).closest('.box').children('input .video').val());
+
+        let linkVideo = $(this).data('video');
+
+
+        let mostrarModal = `<section class="ventana">
+        <input type="checkbox" id="btn-modal"> 
+        <div class="modal">
+            <div class="contenedor">
+                <header>Chequea la Calidad del Curso</header>
+                <label id="label-close" >X</label>
+                <div class="contenido">
+                    <h3>PRIMER VIDEO DEL CURSO</h3>
+                    <p>Imagina el valor que ha aportado y esto fue solo el primer video de un curso completo con el que podras afinar tus habilidades hasta convertirte en experto.</p>
+                    <div class="video-responsive">
+                        <iframe src="`+linkVideo+`" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>`;
+
+        $('body').prepend(mostrarModal);
+
+        //console.log(linkVideo);
+    });
+
+
+/*Se realiza funcionalidad para remover la pantalla modal, usar delegacion de eventos, es importante mencionar la delegacion de eventos ya que en este caso fue necesario hacerlo ya que al principio al renderizar el dom la ventana no existia y se agrego dinamicamente con append por eso al momento de intetar seleccionarla no funcionaba pues no existia desde el comienzo, delegar significa acceder a ella desde otro elemento que sí se renderizo al inicio en este caso el body.
+ */
+
+/*
+ * Por otra parte se tuvo un incoveniente ya que como opcion principal en lugar de remover el elemento se hacia un  visibility hidden pero el video del iframe se seguia reproduciendo, por eso la mejor opcion es eliminar la ventana modal.
+ */
+
+    $('body').on('click', '#label-close', function () {
+        $(this).closest('.ventana').remove();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });

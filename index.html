@@ -17,676 +17,449 @@
 
 </head>
 <body>
+    <!-- Esta ventana modal se renderiza desde main.js y se remueve tambien desde ahí -->
+    <!--<section class="ventana">
+        <input type="checkbox" id="btn-modal">
+        <div class="modal">
+            <div class="contenedor">
+                <header>Chequea la Calidad del Curso</header>
+                <label for="btn-modal">X</label>
+                <div class="contenido">
+                    <h3>PRIMER VIDEO DEL CURSO</h3>
+                    <p>Imagina el valor que ha aportado y esto fue solo el primer video de un curso completo con el que podrás afinar tus habilidades hasta convertirte en experto.</p>
+                    <div class="video-responsive">
+                        <iframe src="https://www.youtube.com/embed/rbuYtrNUxg4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
 
-<!-- header section starts  -->
+    <div class="contenedor-carrito">
+        <input type="checkbox" id="btn-mas">
+        <div class="detalle-costo">
+            <p>repellat alias consequatur modi.<span> $55544</span></p>
+            <p>repellat alias consequatur modi.<span> $55544</span></p>
+            <p>repellat alias consequatur modi.<span> $55544</span></p>
+            <p>repellat alias consequatur modi.<span> $55544</span></p>
+            <p>repellat alias consequatur modi.<span> $55544</span></p>
+            <p>repellat alias consequatur modi.<span> $55544</span></p>
+            <div class="totalchek">
+                <span>Total: </span> <span id="resulcheck" class="resulcheck">$444444</span>
+            </div><br>
+            <button id="checkout">CHEKOUT</button>
+        </div>
+        <div class="btn-mas">
+            <label for="btn-mas" class="fa fa-plus"></label>
+            <label id="contador-articulos" class="fa fa-shopping-cart" style="transform: none; border-radius: 1rem; padding-inline: 0.5rem; background-color: #77dd77;">0</label>
+        </div>
+    </div>
 
-<header>
 
-<div class="header-2">
+    <!-- header section starts  -->
 
-    <div id="menu" class="fas fa-bars"></div>
+    <header>
 
-    <nav class="navbar">
-        <ul>
-            <li><a class="active" href="#home">Inicio</a></li>
-            <li><a href="#arrival">Instructores Destacados</a></li>
-            <li><a href="#gallery">Nuestros Cursos</a></li>
-            <li><a href="#deal">Empresas</a></li>
+        <div class="header-2">
+
+            <div id="menu" class="fas fa-bars"></div>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a class="active" href="#home">Inicio</a></li>
+                    <li><a href="#arrival">Instructores Destacados</a></li>
+                    <li><a href="#gallery">Nuestros Cursos</a></li>
+                    <li><a href="#deal">Empresas</a></li>
+                </ul>
+            </nav>
+
+            <div class="icons">
+                <a href="#" class="fas fa-shopping-cart"></a>
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- header section ends -->
+    <!-- home section starts  -->
+
+    <section class="home" id="home">
+
+        <div class="home-slider owl-carousel">
+
+            <div class="item">
+                <img src="resources/images/banners/servidores.jpg" alt="">
+                <div class="content">
+                    <img style="background-color:white; width:266px;height:86px; object-fit:fill; border-radius:1rem" src="resources/images/logo/PowerEducationLogoHorizontal.png" />
+                    <h3>Pontencia tu Carrera TI</h3>
+                    <p>La mejor capacitación impartida por ingenieros de alto impacto.</p>
+                    <a href="#gallery"><button class="btn"><i class="fas fa-shopping-cart"> </i> Cursos</button></a>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="resources/images/banners/programadores.jpg" alt="">
+                <div class="content">
+                    <img style="background-color:white; width:266px;height:86px; object-fit:fill; border-radius:1rem" src="resources/images/logo/PowerEducationLogoHorizontal.png" />
+                    <h3>Agrega valor a la industria TI</h3>
+                    <p>Se especialista, sé un profesional altamente cotizado.</p>
+                    <a href="#gallery"><button class="btn"><i class="fas fa-shopping-cart"> </i> Cursos</button></a>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="resources/images/banners/programador.jpg" alt="">
+                <div class="content">
+                    <img style="background-color:white; width:266px;height:86px; object-fit:fill; border-radius:1rem" src="resources/images/logo/PowerEducationLogoHorizontal.png" />
+                    <h3>Cursos Avalados</h3>
+                    <p>Cursos reconocidos y avalados por las empresas del área TI.</p>
+                    <a href="#gallery"><button class="btn"><i class="fas fa-shopping-cart"> </i> Cursos</button></a>
+                </div>
+            </div>
+
+
+            <div class="item">
+                <img src="resources/images/banners/liderazgo.jpg" alt="">
+                <div class="content">
+                    <img style="background-color:white; width:266px;height:86px; object-fit:fill; border-radius:1rem" src="resources/images/logo/PowerEducationLogoHorizontal.png" />
+                    <h3>Retroalimentación Inmediata.</h3>
+                    <p>Nuestra gran comunidad provee soporte a nuestros estudiantes.</p>
+                    <a href="#gallery"><button class="btn"><i class="fas fa-shopping-cart"> </i> Cursos</button></a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+    <!-- arrival section starts  -->
+
+    <section class="arrival" id="arrival">
+
+        <h1 class="heading"> <span>Instructores Destacados</span> </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="image">
+                    <img src="resources/images/instructores/perfilwoman1.jpg" alt="">
+                </div>
+                <div class="info">
+                    <h3>ENRIQUEZ ERICA</h3>
+                    <div class="subInfo">
+                        <strong class="price"> MVP Microsoft </strong>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay">
+                    <a href="#gallery" style="--i:3;" class="fas fa-search"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="resources/images/instructores/perfilmen1.jpg" alt="">
+                </div>
+                <div class="info">
+                    <h3>FARINANGO ANGEL</h3>
+                    <div class="subInfo">
+                        <strong class="price"> DEV IBM </strong>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay">
+                    <a href="#gallery" style="--i:3;" class="fas fa-search"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="resources/images/instructores/perfilmen2.jpg" alt="">
+                </div>
+                <div class="info">
+                    <h3>ARMAS LUIS</h3>
+                    <div class="subInfo">
+                        <strong class="price"> ORACLE DBA </strong>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay">
+                    <a href="#gallery" style="--i:3;" class="fas fa-search"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="resources/images/instructores/perfilwoman2.jpg" alt="">
+                </div>
+                <div class="info">
+                    <h3>POZO JESSICA</h3>
+                    <div class="subInfo">
+                        <strong class="price"> DEV SENIOR </strong>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay">
+                    <a href="#gallery" style="--i:3;" class="fas fa-search"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="resources/images/instructores/perfilmen3.jpg" alt="">
+                </div>
+                <div class="info">
+                    <h3>CASTRO RAUL</h3>
+                    <div class="subInfo">
+                        <strong class="price"> CISCO CCNP</strong>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay">
+                    <a href="#gallery" style="--i:3;" class="fas fa-search"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="resources/images/instructores/perfilmen4.jpg" alt="">
+                </div>
+                <div class="info">
+                    <h3>OTUNA WILSON</h3>
+                    <div class="subInfo">
+                        <strong class="price"> DEV FRONT-END</strong>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay">
+                    <a href="#gallery" style="--i:3;" class="fas fa-search"></a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- arrival section ends -->
+    <!-- gallery section starts  -->
+
+    <section class="gallery" id="gallery">
+
+        <h1 class="heading"> <span> Nuestros Cursos </span> </h1>
+
+        <ul class="controls">
+            <li class="btn button-active" data-filter="all">Todos</li>
+            <li class="btn" data-filter="back">Back-End</li>
+            <li class="btn" data-filter="front">Front-End</li>
+            <li class="btn" data-filter="basesdatos">Bases datos</li>
+            <li class="btn" data-filter="softskills">Soft-Skills</li>
         </ul>
-    </nav>
 
-    <div class="icons">
-        <a href="#" class="fas fa-shopping-cart"></a>
-    </div>
+        <div class="image-container" id="image-container">
 
-</div>
-
-</header>
-
-<!-- header section ends -->
-
-<!-- home section starts  -->
-
-<section class="home" id="home">
-
-<div class="home-slider owl-carousel">
-
-    <div class="item">
-        <img src="resources/images/banners/servidores.jpg" alt="">
-        <div class="content">
-            <img style="background-color:white; width:266px;height:86px; object-fit:fill; border-radius:1rem" src="resources/images/logo/PowerEducationLogoHorizontal.png" />
-            <h3>Pontencia tu Carrera TI</h3>
-            <p>La mejor capacitación impartida por ingenieros de alto impacto.</p>
-            <a href="#gallery"><button class="btn"><i class="fas fa-shopping-cart"> </i> Cursos</button></a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img  src="resources/images/banners/programadores.jpg" alt="">
-        <div class="content">
-            <img style="background-color:white; width:266px;height:86px; object-fit:fill; border-radius:1rem" src="resources/images/logo/PowerEducationLogoHorizontal.png" />
-            <h3>Agrega valor a la industria TI</h3>
-            <p>Se especialista, sé un profesional altamente cotizado.</p>
-            <a href="#gallery"><button class="btn"><i class="fas fa-shopping-cart"> </i> Cursos</button></a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="resources/images/banners/programador.jpg" alt="">
-        <div class="content">
-            <img style="background-color:white; width:266px;height:86px; object-fit:fill; border-radius:1rem" src="resources/images/logo/PowerEducationLogoHorizontal.png" />
-            <h3>Cursos Avalados</h3>
-            <p>Cursos reconocidos y avalados por las empresas del área TI.</p>
-            <a href="#gallery"><button class="btn"><i class="fas fa-shopping-cart"> </i> Cursos</button></a>
-        </div>
-    </div>
-
-    <div class="item">
-        <img src="resources/images/banners/liderazgo.jpg" alt="">
-        <div class="content">
-            <img style="background-color:white; width:266px;height:86px; object-fit:fill; border-radius:1rem" src="resources/images/logo/PowerEducationLogoHorizontal.png" />
-            <h3>Retroalimentación Inmediata.</h3>
-            <p>Nuestra gran comunidad provee soporte a nuestros estudiantes.</p>
-            <a href="#gallery"><button class="btn"><i class="fas fa-shopping-cart"> </i> Cursos</button></a>
-        </div>
-    </div>
-
-</div>
-
-</section>
-
-<!-- home section ends -->
-
-<!-- arrival section starts  -->
-
-<section class="arrival" id="arrival">
-
-<h1 class="heading"> <span>Instructores Destacados</span> </h1>
-
-<div class="box-container">
-
-    <div class="box">
-        <div class="image">
-            <img src="resources/images/instructores/perfilwoman1.jpg" alt="">
-        </div>
-        <div class="info">
-            <h3>ENRIQUEZ ERICA</h3>
-            <div class="subInfo">
-                <strong class="price"> MVP Microsoft </strong>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+            <!-- La lista de cursos se renderiza en el script main.js -->
+            <!--<div class="box front">
+                <div class="image">
+                    <img src="resources/images/cursos/img_aspnet.jpg" alt="">
                 </div>
-            </div>
-        </div>
-        <div class="overlay">
-            <a href="#gallery" style="--i:3;" class="fas fa-search"></a>
-        </div>
-    </div>
-
-    <div class="box">
-        <div class="image">
-            <img src="resources/images/instructores/perfilmen1.jpg" alt="">
-        </div>
-        <div class="info">
-            <h3>FARINANGO ANGEL</h3>
-            <div class="subInfo">
-                <strong class="price"> DEV IBM </strong>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-        </div>
-        <div class="overlay">
-            <a href="#gallery" style="--i:3;" class="fas fa-search"></a>
-        </div>
-    </div>
-
-    <div class="box">
-        <div class="image">
-            <img src="resources/images/instructores/perfilmen2.jpg" alt="">
-        </div>
-        <div class="info">
-            <h3>ARMAS LUIS</h3>
-            <div class="subInfo">
-                <strong class="price"> ORACLE DBA </strong>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half"></i>
-                </div>
-            </div>
-        </div>
-        <div class="overlay">
-            <a href="#gallery" style="--i:3;" class="fas fa-search"></a>
-        </div>
-    </div>
-
-    <div class="box">
-        <div class="image">
-            <img src="resources/images/instructores/perfilwoman2.jpg" alt="">
-        </div>
-        <div class="info">
-            <h3>POZO JESSICA</h3>
-            <div class="subInfo">
-                <strong class="price"> DEV SENIOR </strong>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half"></i>
-                </div>
-            </div>
-        </div>
-        <div class="overlay">
-            <a href="#gallery" style="--i:3;" class="fas fa-search"></a>
-        </div>
-    </div>
-
-    <div class="box">
-        <div class="image">
-            <img src="resources/images/instructores/perfilmen3.jpg" alt="">
-        </div>
-        <div class="info">
-            <h3>CASTRO RAUL</h3>
-            <div class="subInfo">
-                <strong class="price"> CISCO CCNP</strong>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-        </div>
-        <div class="overlay">
-            <a href="#gallery" style="--i:3;" class="fas fa-search"></a>
-        </div>
-    </div>
-
-    <div class="box">
-        <div class="image">
-            <img src="resources/images/instructores/perfilmen4.jpg" alt="">
-        </div>
-        <div class="info">
-            <h3>OTUNA WILSON</h3>
-            <div class="subInfo">
-                <strong class="price"> DEV FRONT-END</strong>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-        </div>
-        <div class="overlay">
-            <a href="#gallery" style="--i:3;" class="fas fa-search"></a>
-        </div>
-    </div>
-
-</div>
-
-</section>
-    
-<!-- arrival section ends -->
-
-
-
-<!-- gallery section starts  -->
-
-<section class="gallery" id="gallery">
-
-    <h1 class="heading"> <span> Nuestros Cursos </span> </h1>
-
-    <ul class="controls">
-        <li class="btn button-active" data-filter="all">Todos</li>
-        <li class="btn" data-filter="back">Back-End</li>
-        <li class="btn" data-filter="front">Front-End</li>
-        <li class="btn" data-filter="basesdatos">Bases datos</li>
-        <li class="btn" data-filter="softskills">Soft-Skills</li>
-    </ul>
-    
-    <div class="image-container" id="image-container">
-
-
-        <div class="box front">
-            <div class="image">
-                <img src="resources/images/cursos/img_aspnet.jpg" alt="">
-            </div>
-            <div class="info">
-                <h3>CURSO .NET CORE</h3>
-                <div class="subInfo">
-                    <strong class="price">$100</strong>
-                    <div>
-                        <button class="cursebtn"><i class="fas fa-eye"> </i> Chequear</button>
-                        <button class="cursebtn2"><i class="fas fa-shopping-cart"> </i> Comprar</button>
+                <div class="info">
+                    <h3>CURSO .NET CORE</h3>
+                    <div class="subInfo">
+                        <strong class="price">$100</strong>
+                        <div>
+                            <button class="cursebtn"><i class="fas fa-eye"> </i> Chequear</button>
+                            <button class="cursebtn2"><i class="fas fa-shopping-cart"> </i> Comprar</button>
+                        </div>
                     </div>
-                </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-        </div>
-        <div class="box front">
-            <div class="image">
-                <img src="resources/images/cursos/img_aspnet.jpg" alt="">
-            </div>
-            <div class="info">
-                <h3>CURSO .NET CORE</h3>
-                <div class="subInfo">
-                    <strong class="price">$100</strong>
-                    <div>
-                        <button class="cursebtn"><i class="fas fa-eye"> </i> Chequear</button>
-                        <button class="cursebtn2"><i class="fas fa-shopping-cart"> </i> Comprar</button>
-                    </div>
-                </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-        </div>
-        <div class="box front">
-            <div class="image">
-                <img src="resources/images/cursos/img_aspnet.jpg" alt="">
-            </div>
-            <div class="info">
-                <h3>CURSO .NET CORE</h3>
-                <div class="subInfo">
-                    <strong class="price">$100</strong>
-                    <div>
-                        <button class="cursebtn"><i class="fas fa-eye"> </i> Chequear</button>
-                        <button class="cursebtn2"><i class="fas fa-shopping-cart"> </i> Comprar</button>
-                    </div>
-                </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box front">
-            <div class="image">
-                <img src="resources/images/cursos/img_aspnet.jpg" alt="">
-            </div>
-            <div class="info">
-                <h3>CURSO .NET CORE</h3>
-                <div class="subInfo">
-                    <strong class="price">$100</strong>
-                    <div>
-                        <button class="cursebtn"><i class="fas fa-eye"> </i> Chequear</button>
-                        <button class="cursebtn2"><i class="fas fa-shopping-cart"> </i> Comprar</button>
-                    </div>
-                </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-        </div>
-        <div class="box front">
-            <div class="image">
-                <img src="resources/images/cursos/img_cassandra.jpg" alt="">
-            </div>
-            <div class="info">
-                <h3>smartphones</h3>
-                <div class="subInfo">
-                    <strong class="price">$1000</strong>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="box back">
-            <div class="image">
-                <img src="resources/images/cursos/img_css.jpg" alt="">
-            </div>
-            <div class="info">
-                <h3>laptop</h3>
-                <div class="subInfo">
-                    <strong class="price">$10</strong>
+            <div class="box front">
+                <div class="image">
+                    <img src="resources/images/cursos/img_aspnet.jpg" alt="">
+                </div>
+                <div class="info">
+                    <h3>CURSO .NET CORE</h3>
+                    <div class="subInfo">
+                        <strong class="price">$100</strong>
+                        <div>
+                            <button class="cursebtn"><i class="fas fa-eye"> </i> Chequear</button>
+                            <button class="cursebtn2"><i class="fas fa-shopping-cart"> </i> Comprar</button>
+                        </div>
+                    </div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>-->
 
-        <div class="box basesdatos">
-            <div class="image">
-                <img src="resources/images/cursos/img_devexpress.jpg" alt="">
-            </div>
-            <div class="info">
-                <h3>shoes</h3>
-                <div class="subInfo">
-                    <strong class="price">$1000</strong>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half"></i>
-                    </div>
+
+
+
+
+
+        </div>
+    </section>
+
+    <!-- gallery section ends -->
+    <!-- deal section starts  -->
+
+    <section class="deal" id="deal">
+
+        <h1 class="heading"> <span> Empresas </span> </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+
+                <img src="resources/images/bussines/empresa1.jpg" alt="">
+                <div class="content">
+                    <h3>Colaboradores Capacitados</h3>
+                    <p>Capacita a tus colaboradores TI</p>
+                    <a href="#gallery"><button class="btn">Explora</button></a>
                 </div>
             </div>
-        </div>
 
-        <div class="box basesdatos">
-            <div class="image">
-                <img src="resources/images/cursos/img_liderazgo.jpg" alt="">
-            </div>
-            <div class="info">
-                <h3>laptop</h3>
-                <div class="subInfo">
-                    <strong class="price">$1000</strong>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half"></i>
-                    </div>
+            <div class="box">
+                <img src="resources/images/bussines/empresa2.jpg" alt="">
+                <div class="content">
+                    <h3>Capacitacion Continua</h3>
+                    <p>Aumenta la productividad y proactividad</p>
+                    <a href="#gallery"><button class="btn">Explora</button></a>
                 </div>
             </div>
+
         </div>
 
-        <div class="box softskills">
-            <div class="image">
-                <img src="resources/images/cursos/img_redis.jpg" alt="">
+        <div class="icons-container">
+
+            <div class="icons">
+                <i class="fas fa-desktop"></i>
+                <h3>Desktop</h3>
+                <p>Accede desde tu computador, acceso 24/7 los 365 días del año con alta disponibilidad</p>
             </div>
-            <div class="info">
-                <h3>headphone</h3>
-                <div class="subInfo">
-                    <strong class="price">$1000</strong>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half"></i>
-                    </div>
-                </div>
+
+            <div class="icons">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Móvil</h3>
+                <p>Accede desde tu móvil, nuestra aplicación movil facilita tu aprendizaje continuo.</p>
             </div>
+
+            <div class="icons">
+                <i class="fas fa-money-check-alt"></i>
+                <h3>Paga Fácil</h3>
+                <p>Acceso de por vida a los cursos de Power Education que hayas adquirido y aprobado.</p>
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-check-square"></i>
+                <h3>Confianza y Seguridad</h3>
+                <p>Devolución total de tu dinero en caso de incovenientes en tus compras.</p>
+            </div>
+
         </div>
 
-        <div class="box softskills">
-            <div class="image">
-                <img src="resources/images/cursos/img_sass.jpg" alt="">
-            </div>
-            <div class="info">
-                <h3>shoes</h3>
-                <div class="subInfo">
-                    <strong class="price">$1000</strong>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </section>
 
-        <div class="box softskills">
-            <div class="image">
-                <img src="resources/images/cursos/img_materialize.jpg" alt="">
-            </div>
-            <div class="info">
-                <h3>headphone</h3>
-                <div class="subInfo">
-                    <strong class="price">$1000</strong>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- deal section ends -->
+    <!-- footer section starts  -->
 
-        <div class="box softskills">
-            <div class="image">
-                <img src="resources/images/cursos/img_ruby.jpg" alt="">
-            </div>
-            <div class="info">
-                <h3>headphone</h3>
-                <div class="subInfo">
-                    <strong class="price">$1000</strong>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="footer">
 
-        <div class="box softskills">
-            <div class="image">
-                <img src="resources/images/cursos/img_sqlserver.jpg" alt="">
+        <div class="box-container">
+
+            <div class="box">
+                <a href="#" class="logo"> <img src="resources/images/logo/PowerEducationVertical.png" /> </a>
+
+                <p>Conviertete en un profesional especializado, cotizado por la industria de las tecnologías de la información en poco tiempo, nuestra comunidad e instructores se desarrollan en un estructura colaborativa para entregarte valor.</p>
             </div>
-            <div class="info">
-                <h3>headphone</h3>
-                <div class="subInfo">
-                    <strong class="price">$1000</strong>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half"></i>
-                    </div>
-                </div>
+
+            <div class="box">
+                <h3>Enlaces</h3>
+                <a href="#home">Inicio</a>
+                <a href="#arrival">Instructores Destacados</a>
+                <a href="#gallery">Nuestros Cursos</a>
+                <a href="#deal">Empresas</a>
             </div>
-        </div>
-        <div class="box softskills">
-            <div class="image">
-                <img src="resources/images/cursos/img_trabajoequipo.jpg" alt="">
+
+            <div class="box">
+                <h3>Contáctanos</h3>
+                <p>
+                    <i class="fas fa-home"></i>
+                    Ecuador, Quito, Av. Granados
+                </p>
+                <p>
+                    <i class="fas fa-phone"></i>
+                    +593996236541
+                </p>
+                <p>
+                    <i class="fas fa-globe"></i>
+                    contacto@powereducation.tk
+                </p>
             </div>
-            <div class="info">
-                <h3>headphone</h3>
-                <div class="subInfo">
-                    <strong class="price">$1000</strong>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="box softskills">
-            <div class="image">
-                <img src="resources/images/cursos/img_sqlserver.jpg" alt="">
-            </div>
-            <div class="info">
-                <h3>headphone</h3>
-                <div class="subInfo">
-                    <strong class="price">$1000</strong>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half"></i>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
 
+    </section>
 
+    <!-- footer section ends -->
+    <!-- jquery cdn link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!-- owl carousel js file cdn link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-    </div>
-</section>
+    <!-- custom js file link  -->
+    <script src="js/main.js"></script>
 
-<!-- gallery section ends -->
-
-<!-- deal section starts  -->
-
-<section class="deal" id="deal">
-
-<h1 class="heading"> <span> Empresas </span> </h1>
-
-<div class="box-container">
-
-    <div class="box">
-                  
-        <img src="resources/images/bussines/empresa1.jpg" alt="">
-        <div class="content">
-            <h3>Colaboradores Capacitados</h3>
-            <p>Capacita a tus colaboradores TI</p>
-            <a href="#gallery"><button class="btn">Explora</button></a>
-        </div>
-    </div>
-
-    <div class="box">
-        <img src="resources/images/bussines/empresa2.jpg" alt="">
-        <div class="content">
-            <h3>Capacitacion Continua</h3>
-            <p>Aumenta la productividad y proactividad</p>
-            <a href="#gallery"><button class="btn">Explora</button></a>
-        </div>
-    </div>
-
-</div>
-
-<div class="icons-container">
-
-    <div class="icons">
-        <i class="fas fa-desktop"></i>
-        <h3>Desktop</h3>
-        <p>Accede desde tu computador, acceso 24/7 los 365 días del año con alta disponibilidad</p>
-    </div>
-
-    <div class="icons">
-        <i class="fas fa-mobile-alt"></i>
-        <h3>Móvil</h3>
-        <p>Accede desde tu móvil, nuestra aplicación movil facilita tu aprendizaje continuo.</p>
-    </div>
-
-    <div class="icons">
-        <i class="fas fa-money-check-alt"></i>
-        <h3>Paga Fácil</h3>
-        <p>Acceso de por vida a los cursos de Power Education que hayas adquirido y aprobado.</p>
-    </div>
-
-    <div class="icons">
-        <i class="fas fa-check-square"></i>
-        <h3>Confianza y Seguridad</h3>
-        <p>Devolución total de tu dinero en caso de incovenientes en tus compras.</p>
-    </div>
-
-</div>
-
-</section>
-
-<!-- deal section ends -->
-
-
-<!-- footer section starts  -->
-
-<section class="footer">
-
-    <div class="box-container">
-
-        <div class="box">
-            <a href="#" class="logo"> <img src="resources/images/logo/PowerEducationVertical.png" /> </a>
-
-            <p>Conviertete en un profesional especializado, cotizado por la industria de las tecnologías de la información en poco tiempo, nuestra comunidad e instructores se desarrollan en un estructura colaborativa para entregarte valor.</p>
-        </div>
-
-        <div class="box">
-            <h3>Enlaces</h3>
-            <a href="#home">Inicio</a>
-            <a href="#arrival">Instructores Destacados</a>
-            <a href="#gallery">Nuestros Cursos</a>
-            <a href="#deal">Empresas</a>
-        </div>
-
-        <div class="box">
-            <h3>Contáctanos</h3>
-            <p> <i class="fas fa-home"></i>
-                Ecuador, Quito, Av. Granados
-            </p>
-            <p> <i class="fas fa-phone"></i>
-                +593996236541
-            </p>
-            <p> <i class="fas fa-globe"></i>
-                contacto@powereducation.tk
-            </p>
-        </div>
-
-    </div>
-
-
-</section>
-
-<!-- footer section ends -->
-
-
-
-
-
-
-
-
-
-
-
-<!-- jquery cdn link  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- owl carousel js file cdn link  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-<!-- custom js file link  -->
-<script src="js/main.js"></script>
-    
 </body>
 </html>
