@@ -235,9 +235,9 @@ header .header-2.header-active{
 }
 
 .arrival .box-container .box .image img{
-    height: 100%;
-    object-fit: cover;
-}
+   
+    height: 100%;   
+ }
 
 .arrival .box-container .box .info h3{
     padding:1rem;
@@ -441,11 +441,11 @@ header .header-2.header-active{
     padding:1rem;
     background: #f0f0f0;
 }
-
+    /*=> Se quita el cover fit para que se alineen correctamente los elementos*/
 .gallery .image-container .box .image img{
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    
 }
 
 .gallery .image-container .box:hover .image{
@@ -475,9 +475,20 @@ header .header-2.header-active{
     font-size: 2rem;
 }
 
-.gallery .image-container .box .info .subInfo .stars i{
+
+   /* 
+       => Espacio para cambiar colores al boton
+       .gallery .image-container .box .info .subInfo .cursebtn {
+
+        background-color: #bdecb6;
+        border-radius: 0.5rem;
+        border-width: 0.1rem;
+    }*/
+
+.gallery .image-container .box .info .stars i{
     color:orange;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    margin-left: 0.5rem;
 }
 
 .deal{

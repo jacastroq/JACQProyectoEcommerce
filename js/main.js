@@ -49,6 +49,7 @@ $(document).ready(function(){
 
     });
 
+
     $('.gallery .btn').click(function(){
 
         let filter = $(this).attr('data-filter');
