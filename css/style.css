@@ -13,6 +13,7 @@
     transition: all .2s cubic-bezier(.37,1.14,.26,1.24);
 }
 
+/*=> Color cuando se selecciona con el mause por esto sale rojo las selecciones*/
 *::selection{
     background:#ff3300;
     color:#fff;
