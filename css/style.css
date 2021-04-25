@@ -176,7 +176,7 @@ header .header-2.header-active{
     color:#fff;
     text-shadow: 0 .3rem .5rem #000;
     font-size: 5rem;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 .home .home-slider .item .content p{

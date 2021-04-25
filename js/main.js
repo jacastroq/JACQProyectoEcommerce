@@ -1,26 +1,11 @@
 $(document).ready(function(){
 
-    var probana = `[{"frase":"hola"},{"frase":"cosa"},{"frase":"auto"},{"frase":"leon"},{"frase":"otro"}]`;
+    
 
-    var nuevojson = jQuery.parseJSON(probana);
+   
+    /* ARRAYS QUE CONTIENEN LOS ATRIBUTOS DE LOS CURSOS LOS CUALES CONSTITUYEN LOS ITEMS QUE SE VENDEN EN EL ECOMMERCE*/
 
-    var recorrer = function () {
-
-        var cont = "";
-        for (var i = 0; i < nuevojson.length; i++) {
-
-            cont += '<h3>' + nuevojson[i].frase + '</h3><br />';
-
-            $('#image-container').html(cont);
-            console.log('se esta recorriendo: ' + nuevojson[i].frase);
-        }
-
-    }
-
-    recorrer();
-
-
-    var front =`[
+ var front =`[
 {
 "precio": 10,
 "ruta": "resources/images/cursos/img_html.jpg",
@@ -35,7 +20,7 @@ $(document).ready(function(){
 "precio": 25,
 "ruta": "resources/images/cursos/img_css.jpg",
 "id": 2,
-"tematema": "css",
+"tema": "css",
 "video": "https://www.youtube.com/embed/24gNhTcy6pw",
 "instructor": "POSO DAYANA",
 "idioma": "ES",
@@ -396,6 +381,48 @@ $(document).ready(function(){
 }
 ]`;
 
+
+
+    var cursosJSON = jQuery.parseJSON(front);
+
+    var recorrer = function () {
+
+        var cursosHTML = '';
+        for (var i = 0; i < cursosJSON.length; i++) {
+            
+            cursosHTML += `<div class="box front">\
+                <div class="image">\
+                    <img src="` + cursosJSON[i].ruta + `" alt="">\
+                </div >\
+                <div class="info">\
+                <h3>CURSO: `+ cursosJSON[i].tema + `</h3>\
+                <div class="subInfo" >\
+                    <strong class="price">$`+ cursosJSON[i].precio + `</strong>\
+                <div>\
+                        <button class="cursebtn"><i class="fas fa-eye"> </i> Chequear</button>\
+                        <button class="cursebtn2"><i class="fas fa-shopping-cart"> </i> Comprar</button>\
+                    </div >\
+                </div >\
+               <div class="stars">\
+                   <i class="fas fa-star"></i>\
+                   <i class="fas fa-star"></i>\
+                   <i class="fas fa-star"></i>\
+                   <i class="fas fa-star"></i>\
+                   <i class="fas fa-star"></i>\
+               </div>\
+            </div >\
+          </div >`;
+
+
+
+                    console.log('se esta recorriendo: ' + cursosJSON[i].id);
+        }
+
+        $('#image-container').html(cursosHTML);
+
+    }
+
+    recorrer();
 
     $('#menu').click(function () {
         $(this).toggleClass('fa-times');
