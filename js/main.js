@@ -1,12 +1,11 @@
 $(document).ready(function(){
 
-    
-
    
-    /* ARRAYS QUE CONTIENEN LOS ATRIBUTOS DE LOS CURSOS LOS CUALES CONSTITUYEN LOS ITEMS QUE SE VENDEN EN EL ECOMMERCE*/
+    /* ARRAYS QUE CONTIENE LOS ATRIBUTOS DE LOS CURSOS LOS CUALES CONSTITUYEN LOS ITEMS QUE SE VENDEN EN EL ECOMMERCE*/
 
- var front =`[
+     var cursosArray =`[
 {
+"categoria": "front",
 "precio": 10,
 "ruta": "resources/images/cursos/img_html.jpg",
 "id": 1,
@@ -17,6 +16,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "front",
 "precio": 25,
 "ruta": "resources/images/cursos/img_css.jpg",
 "id": 2,
@@ -27,6 +27,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "front",
 "precio": 35,
 "ruta": "resources/images/cursos/img_javascript.jpg",
 "id": 3,
@@ -37,6 +38,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "front",
 "precio": 15,
 "ruta": "resources/images/cursos/img_bootstrap.jpg",
 "id": 4,
@@ -47,6 +49,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "front",
 "precio": 7,
 "ruta": "resources/images/cursos/img_materialize.jpg",
 "id": 5,
@@ -57,6 +60,7 @@ $(document).ready(function(){
 "reputacion":4
 },
 {
+"categoria": "front",
 "precio": 20,
 "ruta": "resources/images/cursos/img_bulma.jpg",
 "id": 6,
@@ -67,6 +71,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "front",
 "precio": 24,
 "ruta": "resources/images/cursos/img_sass.jpg",
 "id": 7,
@@ -77,6 +82,7 @@ $(document).ready(function(){
 "reputacion":4
 },
 {
+"categoria": "front",
 "precio": 30,
 "ruta": "resources/images/cursos/img_less.jpg",
 "id": 8,
@@ -87,6 +93,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "front",
 "precio": 10,
 "ruta": "resources/images/cursos/img_devexpress.jpg",
 "id": 9,
@@ -95,13 +102,9 @@ $(document).ready(function(){
 "instructor": "MACAS CATTY",
 "idioma": "ES",
 "reputacion":5
-}
-]`;
-
-
-
-    var back =`[
+},
 {
+"categoria": "back",
 "precio": 45,
 "ruta": "resources/images/cursos/img_csharp.jpg",
 "id": 10,
@@ -112,6 +115,7 @@ $(document).ready(function(){
 "reputacion":4
 },
 {
+"categoria": "back",
 "precio": 95,
 "ruta": "resources/images/cursos/img_java.jpg",
 "id": 11,
@@ -122,6 +126,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "back",
 "precio": 10,
 "ruta": "resources/images/cursos/img_php.jpg",
 "id": 12,
@@ -132,6 +137,7 @@ $(document).ready(function(){
 "reputacion":4
 },
 {
+"categoria": "back",
 "precio": 15,
 "ruta": "resources/images/cursos/img_aspnet.jpg",
 "id": 13,
@@ -142,6 +148,7 @@ $(document).ready(function(){
 "reputacion":4
 },
 {
+"categoria": "back",
 "precio": 20,
 "ruta": "resources/images/cursos/img_nodejs.jpg",
 "id": 14,
@@ -152,6 +159,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "back",
 "precio": 40,
 "ruta": "resources/images/cursos/img_laravel.jpg",
 "id": 15,
@@ -162,6 +170,7 @@ $(document).ready(function(){
 "reputacion":4
 },
 {
+"categoria": "back",
 "precio": 20,
 "ruta": "resources/images/cursos/img_ruby.jpg",
 "id": 16,
@@ -172,6 +181,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "back",
 "precio": 20,
 "ruta": "resources/images/cursos/img_scala.jpg",
 "id": 17,
@@ -182,6 +192,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "back",
 "precio": 15,
 "ruta": "resources/images/cursos/img_kotlin.jpg",
 "id": 18,
@@ -190,10 +201,9 @@ $(document).ready(function(){
 "instructor": "ALTA JAVIER",
 "idioma": "ES",
 "reputacion":5
-}
-]`;
-    var basesdatos =`[
+},
 {
+"categoria": "basesdatos",
 "precio": 70,
 "ruta": "resources/images/cursos/img_mysql.jpg",
 "id": 19,
@@ -204,6 +214,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "basesdatos",
 "precio": 85,
 "ruta": "resources/images/cursos/img_sqlserver.jpg",
 "id": 20,
@@ -214,6 +225,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "basesdatos",
 "precio": 20,
 "ruta": "resources/images/cursos/img_postgresql.jpg",
 "id": 21,
@@ -224,6 +236,7 @@ $(document).ready(function(){
 "reputacion":4
 },
 {
+"categoria": "basesdatos",
 "precio": 35,
 "ruta": "resources/images/cursos/img_mariadb.jpg",
 "id": 22,
@@ -234,6 +247,7 @@ $(document).ready(function(){
 "reputacion":4
 },
 {
+"categoria": "basesdatos",
 "precio": 10,
 "ruta": "resources/images/cursos/img_firebase.jpg",
 "id": 23,
@@ -244,6 +258,7 @@ $(document).ready(function(){
 "reputacion":4
 },
 {
+"categoria": "basesdatos",
 "precio": 25,
 "ruta": "resources/images/cursos/img_redis.jpg",
 "id": 24,
@@ -254,6 +269,7 @@ $(document).ready(function(){
 "reputacion":4
 },
 {
+"categoria": "basesdatos",
 "precio": 25,
 "ruta": "resources/images/cursos/img_oracle.jpg",
 "id": 25,
@@ -264,6 +280,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "basesdatos",
 "precio": 40,
 "ruta": "resources/images/cursos/img_db2.jpg",
 "id": 26,
@@ -274,6 +291,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "basesdatos",
 "precio": 10,
 "ruta": "resources/images/cursos/img_cassandra.jpg",
 "id": 27,
@@ -282,14 +300,9 @@ $(document).ready(function(){
 "instructor": "CRESPO CRISTINA",
 "idioma": "ES",
 "reputacion":5
-}
-]`;
-
-
-
-    var softskills =`"softskills":
-[
+},
 {
+"categoria": "softskills",
 "precio": 15,
 "ruta": "resources/images/cursos/img_liderazgo.jpg",
 "id": 28,
@@ -300,6 +313,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "softskills",
 "precio": 15,
 "ruta": "resources/images/cursos/img_comunicacionefectiva.jpg",
 "id": 29,
@@ -310,6 +324,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "softskills",
 "precio": 30,
 "ruta": "resources/images/cursos/img_pnl.jpg",
 "id": 30,
@@ -320,6 +335,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "softskills",
 "precio": 25,
 "ruta": "resources/images/cursos/img_lecturarapida.jpg",
 "id": 31,
@@ -330,6 +346,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "softskills",
 "precio": 10,
 "ruta": "resources/images/cursos/img_atencioncliente.jpg",
 "id": 32,
@@ -340,6 +357,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "softskills",
 "precio": 45,
 "ruta": "resources/images/cursos/img_trabajoequipo.jpg",
 "id": 33,
@@ -350,6 +368,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "softskills",
 "precio": 15,
 "ruta": "resources/images/cursos/img_finanzaspersonales.jpg",
 "id": 34,
@@ -360,6 +379,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "softskills",
 "precio": 20,
 "ruta": "resources/images/cursos/img_emprendimiento.jpg",
 "id": 35,
@@ -370,6 +390,7 @@ $(document).ready(function(){
 "reputacion":5
 },
 {
+"categoria": "softskills",
 "precio": 50,
 "ruta": "resources/images/cursos/img_ventas.jpg",
 "id": 36,
@@ -382,15 +403,16 @@ $(document).ready(function(){
 ]`;
 
 
+/*Tomar en cuenta que es importante realizar la concatenacion de manera correcta un espacio, o algun detalle podria hacer que no se renderice correctamente o que se pierda la propiedad de algun atributo */
 
-    var cursosJSON = jQuery.parseJSON(front);
+    var cursosJSON = jQuery.parseJSON(cursosArray);
 
     var recorrer = function () {
 
         var cursosHTML = '';
         for (var i = 0; i < cursosJSON.length; i++) {
             
-            cursosHTML += `<div class="box front">\
+            cursosHTML += `<div class="box `+cursosJSON[i].categoria+`">\
                 <div class="image">\
                     <img src="` + cursosJSON[i].ruta + `" alt="">\
                 </div >\
@@ -412,8 +434,6 @@ $(document).ready(function(){
                </div>\
             </div >\
           </div >`;
-
-
 
                     console.log('se esta recorriendo: ' + cursosJSON[i].id);
         }
