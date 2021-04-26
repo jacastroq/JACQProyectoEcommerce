@@ -416,6 +416,7 @@ $(document).ready(function () {
         arrayCarritoCompras = [];
         $('#detalle-costo').children('p').remove();
         $('#resulcheck').html('$0');
+        $('#contador-articulos').html('0');
     }
     vaciarElementosCarritoCompras();
 
@@ -429,31 +430,32 @@ $(document).ready(function () {
         console.log('resultado: ' + result);
 
         if (result === -1) {
-           // vaciarElementosCarritoCompras();
+            // vaciarElementosCarritoCompras();
 
             arrayCarritoCompras.push(cursoCarrito);
             alert('Estimado usuario el curso ha sido agregado a su carrito de compras, revise en la esquina inferior izquierda de su pantalla haciendo click en el signo de suma rojo.');
 
-        let cantidadCarritoCompras = arrayCarritoCompras.length;
+            let cantidadCarritoCompras = arrayCarritoCompras.length;
 
-        if (cantidadCarritoCompras != 0) {
+            if (cantidadCarritoCompras != 0) {
 
-            let acumuladorSaldo = 0;
-            $('#contador-articulos').html(`` + cantidadCarritoCompras);
-            $('#detalle-costo').children('p').remove();
-            for (var i = 0; i < arrayCarritoCompras.length; i++) {
-                let aux = cursosJSON[arrayCarritoCompras[i] - 1];
+                let acumuladorSaldo = 0;
+                $('#contador-articulos').html(`` + cantidadCarritoCompras);
+                $('#detalle-costo').children('p').remove();
 
-                let agregarCarrito = `<p>` + `Curso: ` + aux.tema + `<span> $` + aux.precio + `</span></p>`;
-                acumuladorSaldo += aux.precio;
+                for (var i = 0; i < arrayCarritoCompras.length; i++) {
+                    let aux = cursosJSON[arrayCarritoCompras[i] - 1];
 
-                $('#detalle-costo').prepend(agregarCarrito);
+                    let agregarCarrito = `<p>` + `Curso: ` + aux.tema + `<span> $` + aux.precio + `</span></p>`;
+                    acumuladorSaldo += aux.precio;
+
+                    $('#detalle-costo').prepend(agregarCarrito);
+                }
+                $('#resulcheck').html(`$` + acumuladorSaldo);
+
+            } else {
+                alert('Estimado usuario no tiene cursos en el carrito de compras.');
             }
-            $('#resulcheck').html(`$`+acumuladorSaldo);
-
-        } else {
-            alert('Estimado usuario no tiene cursos en el carrito de compras.');
-        }
 
         } else {
             alert('Estimado usuario este curso ya se encuentra en su carrito de compras.');
@@ -467,19 +469,77 @@ $(document).ready(function () {
     //agregarElementosCarritoCompras(35);
     //agregarElementosCarritoCompras(36);
 
-    
+
+    //Se realiza metodo que actualiza los datos del carrito de compras
+    var actualizarElementosCarritoCompras = function () {
 
 
+            let cantidadCarritoCompras = arrayCarritoCompras.length;
 
-/*Tomar en cuenta que es importante realizar la concatenacion de manera correcta un espacio, o algun detalle podria hacer que no se renderice correctamente o que se pierda la propiedad de algun atributo */
+        if (cantidadCarritoCompras != 0) {
+
+            let acumuladorSaldo = 0;
+            $('#contador-articulos').html(`` + cantidadCarritoCompras);
+
+            $('#detalle-costo').children('p').remove();
+
+            for (var i = 0; i < arrayCarritoCompras.length; i++) {
+                let aux = cursosJSON[arrayCarritoCompras[i] - 1];
+
+                let agregarCarrito = `<p>` + `Curso: ` + aux.tema + `<span> $` + aux.precio + `</span></p>`;
+                acumuladorSaldo += aux.precio;
+
+                $('#detalle-costo').prepend(agregarCarrito);
+            }
+
+            $('#resulcheck').html(`$` + acumuladorSaldo);
+            $('#span-total-pagar').html('$' + acumuladorSaldo);
+
+        } else {
+            vaciarElementosCarritoCompras();
+            $('#span-total-pagar').html('$' + 0);
+        }
+    };
+
+
+    //Metodo que devuelve un array que contiene en la posicion 0 un string correspondiente a los div que seran mostrados en el checkout,ademas en la posicion 1 se guarda el saldo acumulado valor que servira para asignarlo al span de total del modal de checkout
+    var checkoutElementosCarritoCompras = function () {
+        let checkoutListadoCursos = ``;
+
+        //     `<div class="articulo-curso">
+        //	<img src="resources/images/cursos/img_devexpress.jpg" alt="">
+        //	<p>Curso: Asp-Net <span>$25</span></p>
+        //	<button id="btneliminarcurso2" data-ident="2" class="eliminar-curso-check">Eliminar</button>
+        //</div>`
+
+        let acumuladorSaldo = 0;
+
+        for (var i = 0; i < arrayCarritoCompras.length; i++) {
+            let aux = cursosJSON[arrayCarritoCompras[i] - 1];
+
+
+            checkoutListadoCursos += `<div class="articulo-curso"><img src="` + aux.ruta + `" alt="">
+								<p>Curso: ` + aux.tema + ` <span>` + aux.precio + `</span></p><button id="btneliminarcurso` + aux.id + `" data-ident="` + aux.id + `" class="eliminar-curso-check">Eliminar</button></div>`;
+            acumuladorSaldo += aux.precio;
+
+        }
+
+        let arrayResultado = [checkoutListadoCursos, acumuladorSaldo];
+        return arrayResultado;
+
+
+    };
+
+
+    /*Tomar en cuenta que es importante realizar la concatenacion de manera correcta un espacio, o algun detalle podria hacer que no se renderice correctamente o que se pierda la propiedad de algun atributo */
     var recorrer = function () {
 
         var cursosHTML = '';
         for (var i = 0; i < cursosJSON.length; i++) {
-            
-            cursosHTML = `<div class="box ` + cursosJSON[i].categoria +`">\
-                <input type="hidden" id="`+ cursosJSON[i].id+`" readonly>\
-                <input type="hidden" class="video" value="`+cursosJSON[i].video+`" readonly>\
+
+            cursosHTML = `<div class="box ` + cursosJSON[i].categoria + `">\
+                <input type="hidden" id="`+ cursosJSON[i].id + `" readonly>\
+                <input type="hidden" class="video" value="`+ cursosJSON[i].video + `" readonly>\
 
                 <div class="image">\
                     <img src="` + cursosJSON[i].ruta + `" alt="">\
@@ -489,7 +549,7 @@ $(document).ready(function () {
                 <div class="subInfo" >\
                     <strong class="price">$`+ cursosJSON[i].precio + `</strong>\
                 <div>\
-                        <button data-video="` + cursosJSON[i].video +`" class="cursebtn"><i class="fas fa-eye"> </i> Chequear</button>\
+                        <button data-video="` + cursosJSON[i].video + `" class="cursebtn"><i class="fas fa-eye"> </i> Chequear</button>\
                         <button data-id="`+ cursosJSON[i].id + `" class="cursebtn2"><i class="fas fa-shopping-cart"> </i> Comprar</button>\
                     </div >\
                 </div >\
@@ -505,11 +565,11 @@ $(document).ready(function () {
 
             $('#image-container').append(cursosHTML);
 
-           // console.log('se esta recorriendo: ' + cursosJSON[i].id);
+            // console.log('se esta recorriendo: ' + cursosJSON[i].id);
         }
 
-      // otra manera de renderiza los elementos como html pero cursosHTML deberia convertirse en un acumulador +=
-      //  $('#image-container').html(cursosHTML);
+        // otra manera de renderiza los elementos como html pero cursosHTML deberia convertirse en un acumulador +=
+        //  $('#image-container').html(cursosHTML);
 
     }
 
@@ -522,25 +582,25 @@ $(document).ready(function () {
         $('.navbar').toggleClass('nav-toggle');
     });
 
-    $(window).on('scroll load',function(){
+    $(window).on('scroll load', function () {
 
         $('#menu').removeClass('fa-times');
         $('.navbar').removeClass('nav-toggle');
 
-        if($(window).scrollTop() > 68){
+        if ($(window).scrollTop() > 68) {
             $('header .header-2').addClass('header-active');
-        }else{
+        } else {
             $('header .header-2').removeClass('header-active');
         }
 
-        $('section').each(function(){
+        $('section').each(function () {
 
             let height = $(this).height();
             let offset = $(this).offset().top - 200;
             let top = $(window).scrollTop();
             let id = $(this).attr('id');
 
-            if(top >= offset && top < offset + height){
+            if (top >= offset && top < offset + height) {
                 $('.navbar ul li a').removeClass('active');
                 $('.navbar').find(`[href="#${id}"]`).addClass('active');
             }
@@ -550,15 +610,15 @@ $(document).ready(function () {
     });
 
     $('.home-slider').owlCarousel({
-        items:1,
-        nav:true,
-        dots:false,
-        autoplay:true,
-        autoplayTimeout:8000,
-        loop:true
+        items: 1,
+        nav: true,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 8000,
+        loop: true
     });
 
-    $('.small-image img').click(function(){
+    $('.small-image img').click(function () {
 
         $(this).addClass('image-active').siblings().removeClass('image-active');
         let image = $(this).attr('src');
@@ -567,24 +627,24 @@ $(document).ready(function () {
     });
 
 
-    $('.gallery .btn').click(function(){
+    $('.gallery .btn').click(function () {
 
         let filter = $(this).attr('data-filter');
-        if(filter == 'all'){
+        if (filter == 'all') {
             $('.gallery .box').show(400);
-        }else{
-            $('.gallery .box').not('.'+filter).hide(200);
-            $('.gallery .box').filter('.'+filter).show(400);
+        } else {
+            $('.gallery .box').not('.' + filter).hide(200);
+            $('.gallery .box').filter('.' + filter).show(400);
         }
 
         $(this).addClass('button-active').siblings().removeClass('button-active');
 
     });
 
-/*Se realiza funcionalidad para mostrar o remover una ventana modal para visulaizar el primer video de los cursos*/
+    /*Se realiza funcionalidad para mostrar o remover una ventana modal para visulaizar el primer video de los cursos*/
 
 
-    $( '.cursebtn').on('click',function () {
+    $('.cursebtn').on('click', function () {
 
         //Da undefined por que se intenta acceder a nodos que fueron renderizados despues de haber cargado el dom, por eso es importante en lugar de usar .html usar el metodo add para que se agreguen los nodos
         //  console.log($(this).closest('.box').children('input .video').val());
@@ -602,7 +662,7 @@ $(document).ready(function () {
                     <h3>PRIMER VIDEO DEL CURSO</h3>
                     <p>Imagina el valor que ha aportado y esto fue solo el primer video de un curso completo con el que podras afinar tus habilidades hasta convertirte en experto.</p>
                     <div class="video-responsive">
-                        <iframe src="`+linkVideo+`" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="`+ linkVideo + `" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -618,17 +678,17 @@ $(document).ready(function () {
     $('.cursebtn2').on('click', function () {
 
         let idCurso = $(this).data('id');
-        agregarElementosCarritoCompras(idCurso+0);
+        agregarElementosCarritoCompras(idCurso + 0);
 
     });
 
 
-/*Se realiza funcionalidad para remover la pantalla modal, usar delegacion de eventos, es importante mencionar la delegacion de eventos ya que en este caso fue necesario hacerlo ya que al principio al renderizar el dom la ventana no existia y se agrego dinamicamente con append por eso al momento de intetar seleccionarla no funcionaba pues no existia desde el comienzo, delegar significa acceder a ella desde otro elemento que sí se renderizo al inicio en este caso el body.
- */
+    /*Se realiza funcionalidad para remover la pantalla modal, usar delegacion de eventos, es importante mencionar la delegacion de eventos ya que en este caso fue necesario hacerlo ya que al principio al renderizar el dom la ventana no existia y se agrego dinamicamente con append por eso al momento de intetar seleccionarla no funcionaba pues no existia desde el comienzo, delegar significa acceder a ella desde otro elemento que sí se renderizo al inicio en este caso el body.
+     */
 
-/*
- * Por otra parte se tuvo un incoveniente ya que como opcion principal en lugar de remover el elemento se hacia un  visibility hidden pero el video del iframe se seguia reproduciendo, por eso la mejor opcion es eliminar la ventana modal.
- */
+    /*
+     * Por otra parte se tuvo un incoveniente ya que como opcion principal en lugar de remover el elemento se hacia un  visibility hidden pero el video del iframe se seguia reproduciendo, por eso la mejor opcion es eliminar la ventana modal.
+     */
 
     $('body').on('click', '#label-close', function () {
         $(this).closest('.ventana').remove();
@@ -639,9 +699,10 @@ $(document).ready(function () {
     /*Ventana Modal para realizar el chekcout del carrito de compras*/
 
     $('#checkout').on('click', function () {
+        let cantidadCarritoCompras = arrayCarritoCompras.length;
+        if (cantidadCarritoCompras != 0) {
 
-
-        let mostrarModal = `<section class="ventana">
+            let datosCobro = `<section class="ventana">
         <input type="checkbox" id="btn-modal"> 
         <div class="modal">
             <div class="contenedor">
@@ -656,37 +717,48 @@ $(document).ready(function () {
 
                         <div id="form-datos">
 							<p>Datos de Cobro:</p>
-							<input required class="ingresar-data" placeholder="Correo Electronico" type="email">
-							<input required class="ingresar-data" placeholder="Nombre en la tarjeta" type="text">
-							<input required class="ingresar-data" placeholder="Numero de tarjeta" type="text" maxlength="16">
-							<input required class="ingresar-data" placeholder="CVC" type="text" maxlength="3">
+							<input id="email-usuario" required class="ingresar-data" placeholder="Correo Electronico" type="email">
+							<input id="nombre-tarjeta" required class="ingresar-data" placeholder="Nombre en la tarjeta" type="text">
+							<input id="numero-tarjeta" required class="ingresar-data" placeholder="Numero de tarjeta" type="text" maxlength="16">
+							<input id="cvc" required class="ingresar-data" placeholder="CVC" type="text" maxlength="3">
 
-							<button class="confirmar-compra" id="confirmar-compra">REALIZAR PAGO</button>
+							<button id="confirmar-compra" class="confirmar-compra">REALIZAR PAGO</button>
 						</div>
 
 
 
-						<div id="check-cursos">
-		
-							<div class="articulo-curso">
-								<img src="resources/images/cursos/img_devexpress.jpg" alt="">
-								<p>Curso: Asp-Net <span>$25</span></p>
-								<button id="btneliminarcurso2" data-ident="2" class="eliminar-curso-check">Eliminar</button>
-							</div>
-							<div class="articulo-curso">
-								<img  src="resources/images/cursos/img_bootstrap.jpg" alt="">
-								<p>Curso: Asp-Net <span>$25</span></p>
-								<button id="btneliminarcurso3" data-ident="3" class="eliminar-curso-check">Eliminar</button>
-							</div>
+						<div id="check-cursos">`;
 
-							<div class="articulo-curso">
-								<img  src="resources/images/cursos/img_html.jpg" alt="">
-								<p>Curso: Asp-Net <span>$25</span></p>
-								<button id="btneliminarcurso4" data-ident="4" class="eliminar-curso-check">Eliminar</button>
-							</div>
 
-							<div id="total-pagar">
-                                 <p>TOTAL A PAGAR: <span>$250</span> </p>
+
+            let listadoCursos = checkoutElementosCarritoCompras();
+
+            let divsRenderizar = listadoCursos[0];
+            let costoAcumulado = listadoCursos[1];
+
+            // `<div class="articulo-curso">
+            //	<img src="resources/images/cursos/img_devexpress.jpg" alt="">
+            //	<p>Curso: Asp-Net <span>$25</span></p>
+            //	<button id="btneliminarcurso2" data-ident="2" class="eliminar-curso-check">Eliminar</button>
+            //</div>
+            //<div class="articulo-curso">
+            //	<img  src="resources/images/cursos/img_bootstrap.jpg" alt="">
+            //	<p>Curso: Asp-Net <span>$25</span></p>
+            //	<button id="btneliminarcurso3" data-ident="3" class="eliminar-curso-check">Eliminar</button>
+            //</div>
+
+            //<div class="articulo-curso">
+            //	<img  src="resources/images/cursos/img_html.jpg" alt="">
+            //	<p>Curso: Asp-Net <span>$25</span></p>
+            //	<button id="btneliminarcurso4" data-ident="4" class="eliminar-curso-check">Eliminar</button>
+            //</div>`
+
+
+
+
+
+            let parteFinalSection = `<div id="total-pagar">
+                                 <p>TOTAL A PAGAR: <span id="span-total-pagar">$`+ costoAcumulado+`</span> </p>
 							</div>
 						</div>
                   </div>
@@ -696,9 +768,33 @@ $(document).ready(function () {
         </div>
     </section>`;
 
-        $('body').prepend(mostrarModal);
+            let rederizarCheckoutComplete = datosCobro + divsRenderizar + parteFinalSection;
 
+            $('body').prepend(rederizarCheckoutComplete);
+
+
+
+        } else {
+            alert('Estimado usuario no tiene cursos en el carrito de compras.');
+        }
         //console.log(linkVideo);
+    });
+
+
+    /*Boton que elimina de la pantalla del chekout ademas actualiza el carrito de compras*/
+
+    $('body').on('click', '.eliminar-curso-check', function () {
+        let cursoEliminado = $(this).data('ident');
+        var index = arrayCarritoCompras.indexOf(cursoEliminado);
+        if (index > -1) {
+            arrayCarritoCompras.splice(index, 1);
+        }
+
+        actualizarElementosCarritoCompras();
+        $(this).closest('.articulo-curso').remove();
+
+
+       // console.log(cursoEliminado);
     });
 
 
