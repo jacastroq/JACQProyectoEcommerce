@@ -404,12 +404,11 @@ $(document).ready(function () {
 
 
 
-    /* Variable para ir guardando en un array los cursos comprados y poder realizar calculos y la suma. */
-
-
     /* Cast de string a JSON */
     var cursosJSON = jQuery.parseJSON(cursosArray);
 
+
+    /*Array que guarda los id de los cursos ingresados al carrito de compras */
     var arrayCarritoCompras = [];
 
     //Metodo para darle una nueva instancia al carrito de compras, se cambia la referencia de memoria para que se muestre vacio
@@ -637,7 +636,70 @@ $(document).ready(function () {
 
 
 
+    /*Ventana Modal para realizar el chekcout del carrito de compras*/
 
+    $('#checkout').on('click', function () {
+
+
+        let mostrarModal = `<section class="ventana">
+        <input type="checkbox" id="btn-modal"> 
+        <div class="modal">
+            <div class="contenedor">
+                <header>Checkout Carrito de compras</header>
+                <label id="label-close" >X</label>
+                <div class="contenido">
+                    <h3 style="background-color:#ff9030; border-radius: 0.5rem; width:70%; margin: 0 auto; text-align:center;">REVISA Y CONFIRMA TU COMPRA</h3>
+
+
+                  <div id="confirmarcheck">
+
+
+                        <div id="form-datos">
+							<p>Datos de Cobro:</p>
+							<input required class="ingresar-data" placeholder="Correo Electronico" type="email">
+							<input required class="ingresar-data" placeholder="Nombre en la tarjeta" type="text">
+							<input required class="ingresar-data" placeholder="Numero de tarjeta" type="text" maxlength="16">
+							<input required class="ingresar-data" placeholder="CVC" type="text" maxlength="3">
+
+							<button class="confirmar-compra" id="confirmar-compra">REALIZAR PAGO</button>
+						</div>
+
+
+
+						<div id="check-cursos">
+		
+							<div class="articulo-curso">
+								<img src="resources/images/cursos/img_devexpress.jpg" alt="">
+								<p>Curso: Asp-Net <span>$25</span></p>
+								<button id="btneliminarcurso2" data-ident="2" class="eliminar-curso-check">Eliminar</button>
+							</div>
+							<div class="articulo-curso">
+								<img  src="resources/images/cursos/img_bootstrap.jpg" alt="">
+								<p>Curso: Asp-Net <span>$25</span></p>
+								<button id="btneliminarcurso3" data-ident="3" class="eliminar-curso-check">Eliminar</button>
+							</div>
+
+							<div class="articulo-curso">
+								<img  src="resources/images/cursos/img_html.jpg" alt="">
+								<p>Curso: Asp-Net <span>$25</span></p>
+								<button id="btneliminarcurso4" data-ident="4" class="eliminar-curso-check">Eliminar</button>
+							</div>
+
+							<div id="total-pagar">
+                                 <p>TOTAL A PAGAR: <span>$250</span> </p>
+							</div>
+						</div>
+                  </div>
+                   
+                </div>
+            </div>
+        </div>
+    </section>`;
+
+        $('body').prepend(mostrarModal);
+
+        //console.log(linkVideo);
+    });
 
 
 

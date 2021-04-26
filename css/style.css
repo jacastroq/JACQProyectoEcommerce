@@ -689,7 +689,7 @@ header .header-2 {
 
 /*=> ESTILOS DE LA VENTANA MODAL*/
 
-ventana, .modal {
+.ventana .modal {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -780,6 +780,121 @@ ventana, .modal {
     cursor: pointer;
 }
 
+#confirmarcheck {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+#check-cursos {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    width: 68%;
+    padding-left: 2rem;
+    overflow: scroll;
+    height: 36rem;
+    align-content: center;
+}
+
+#form-datos {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 38%;
+}
+
+.articulo-curso {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+    .articulo-curso .eliminar-curso-check {
+        padding: 0.4rem;
+        background-color: #EF476F;
+        color: white;
+        margin-left: 0.3rem;
+        font-weight: bold;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-size: 1.6rem;
+        width: 19%;
+        margin: 2rem;
+    }
+
+    .articulo-curso p {
+        font-weight: bold;
+        width: 48%;
+        padding-top: 5rem;
+        text-align: center;
+    }
+
+    .articulo-curso img {
+        font-weight: bold;
+        width: 38%;
+        padding: 2rem;
+    }
+
+    .articulo-curso p span {
+        color: #1883ba;
+        font-weight: bolder;
+    }
+
+    .articulo-curso .eliminar-curso-check:hover {
+        padding: 0.4rem;
+        background-color: white;
+        color: #EF476F;
+        margin-left: 0.3rem;
+        font-weight: bold;
+        border-radius: 0.5rem;
+        text-decoration: none;
+    }
+
+#form-datos .ingresar-data {
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+    padding: 0.4rem;
+}
+
+#form-datos p {
+    font-weight: bold;
+}
+
+#form-datos .confirmar-compra {
+    margin-top: 1rem;
+    font-size: 2.3rem;
+    padding: 0.6rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #1883ba;
+}
+
+    #form-datos .confirmar-compra:hover {
+        background-color: #EF476F;
+    }
+
+#check-cursos #total-pagar {
+    border-radius: 1rem;
+    background-color: #afe26c;
+    text-align: center;
+    padding: 0.5rem;
+    margin-top: 1rem;
+}
+
+    #check-cursos #total-pagar p {
+        font-weight: bold;
+    }
+
+        #check-cursos #total-pagar p span {
+            font-weight: bolder;
+            font-size: 2rem;
+            color: #EF476F;
+        }
 /* Hacer responsive video de youtube*/
 
 .video-responsive {
@@ -902,7 +1017,10 @@ ventana, .modal {
     padding: 0.4rem;
     font-weight: bold;
     color: rgb(0, 0, 0);
+    font-size: 3rem;
+    margin-left:8rem;
     border-width: 0rem;
+    
 }
 
     #checkout:hover {
