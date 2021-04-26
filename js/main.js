@@ -1,9 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
-   
+
     /* ARRAYS QUE CONTIENE LOS ATRIBUTOS DE LOS CURSOS LOS CUALES CONSTITUYEN LOS ITEMS QUE SE VENDEN EN EL ECOMMERCE*/
 
-     var cursosArray =`[
+    var cursosArray = `[
 {
 "categoria": "front",
 "precio": 10,
@@ -404,11 +404,73 @@ $(document).ready(function(){
 
 
 
-/* Variable para ir guardando en un array los cursos comprados y poder realizar calculos y la suma. */
+    /* Variable para ir guardando en un array los cursos comprados y poder realizar calculos y la suma. */
 
 
-/* Cast de string a JSON */
+    /* Cast de string a JSON */
     var cursosJSON = jQuery.parseJSON(cursosArray);
+
+    var arrayCarritoCompras = [];
+
+    //Metodo para darle una nueva instancia al carrito de compras, se cambia la referencia de memoria para que se muestre vacio
+    var vaciarElementosCarritoCompras = function () {
+        arrayCarritoCompras = [];
+        $('#detalle-costo').children('p').remove();
+        $('#resulcheck').html('$0');
+    }
+    vaciarElementosCarritoCompras();
+
+    //Funcion que agrega id de cursos al array carrito de compras
+    //verificar que no se escoja el mismo curso 2 veces.
+    //-1 si no esta repitido, 0 si se es repetido
+    // Metodo que agrega elementos al carrito de compra hace una suma preliminar del total a pagar por el usuario y rendiriza en pantalla.
+    var agregarElementosCarritoCompras = function (cursoCarrito) {
+
+        var result = arrayCarritoCompras.indexOf(cursoCarrito);
+        console.log('resultado: ' + result);
+
+        if (result === -1) {
+           // vaciarElementosCarritoCompras();
+
+            arrayCarritoCompras.push(cursoCarrito);
+            alert('Estimado usuario el curso ha sido agregado a su carrito de compras, revise en la esquina inferior izquierda de su pantalla haciendo click en el signo de suma rojo.');
+
+        let cantidadCarritoCompras = arrayCarritoCompras.length;
+
+        if (cantidadCarritoCompras != 0) {
+
+            let acumuladorSaldo = 0;
+            $('#contador-articulos').html(`` + cantidadCarritoCompras);
+            $('#detalle-costo').children('p').remove();
+            for (var i = 0; i < arrayCarritoCompras.length; i++) {
+                let aux = cursosJSON[arrayCarritoCompras[i] - 1];
+
+                let agregarCarrito = `<p>` + `Curso: ` + aux.tema + `<span> $` + aux.precio + `</span></p>`;
+                acumuladorSaldo += aux.precio;
+
+                $('#detalle-costo').prepend(agregarCarrito);
+            }
+            $('#resulcheck').html(`$`+acumuladorSaldo);
+
+        } else {
+            alert('Estimado usuario no tiene cursos en el carrito de compras.');
+        }
+
+        } else {
+            alert('Estimado usuario este curso ya se encuentra en su carrito de compras.');
+        }
+    };
+
+
+    //agregarElementosCarritoCompras(10);
+    //agregarElementosCarritoCompras(10);
+    //agregarElementosCarritoCompras(35);
+    //agregarElementosCarritoCompras(35);
+    //agregarElementosCarritoCompras(36);
+
+    
+
+
 
 /*Tomar en cuenta que es importante realizar la concatenacion de manera correcta un espacio, o algun detalle podria hacer que no se renderice correctamente o que se pierda la propiedad de algun atributo */
     var recorrer = function () {
@@ -551,6 +613,14 @@ $(document).ready(function(){
         $('body').prepend(mostrarModal);
 
         //console.log(linkVideo);
+    });
+
+
+    $('.cursebtn2').on('click', function () {
+
+        let idCurso = $(this).data('id');
+        agregarElementosCarritoCompras(idCurso+0);
+
     });
 
 
