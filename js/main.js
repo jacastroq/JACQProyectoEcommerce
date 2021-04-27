@@ -519,7 +519,7 @@ $(document).ready(function () {
 
 
             checkoutListadoCursos += `<div class="articulo-curso"><img src="` + aux.ruta + `" alt="">
-								<p>Curso: ` + aux.tema + ` <span>` + aux.precio + `</span></p><button id="btneliminarcurso` + aux.id + `" data-ident="` + aux.id + `" class="eliminar-curso-check">Eliminar</button></div>`;
+								<p>Curso: ` + aux.tema + ` <span>$` + aux.precio + `</span></p><button id="btneliminarcurso` + aux.id + `" data-ident="` + aux.id + `" class="eliminar-curso-check">Eliminar</button></div>`;
             acumuladorSaldo += aux.precio;
 
         }
@@ -798,7 +798,73 @@ $(document).ready(function () {
     });
 
 
+    $('body').on('click', '#confirmar-compra', function () {
 
+        let email = $('#email-usuario').val();
+        console.log(email);
+        let nombreUsuario = $('#nombre-tarjeta').val();
+        let numTarjeta = $('#numero-tarjeta').val();
+        let valCVC = $('#cvc').val();
+
+        if (email == null || email == undefined || email == '' || nombreUsuario == null || nombreUsuario == undefined || nombreUsuario == '' || numTarjeta == null || numTarjeta == undefined || numTarjeta == '' || valCVC == null || valCVC == undefined || valCVC == '' ) {
+            alert('Campos necesarios no se han ingresado o el formato que ha escrito es incorrecto.');
+        } else {
+            let cadenaConcatenada = '';
+
+            for (var i = 0; i < arrayCarritoCompras.length; i++) {
+                let aux = cursosJSON[arrayCarritoCompras[i] - 1];
+
+                if (i == 0) {
+                    cadenaConcatenada = aux.tema + '$' + aux.precio;
+                } else {
+                    cadenaConcatenada += '|' + aux.tema + '$' + aux.precio;
+                }
+            }
+
+            var enviarPostBack = `{"Correo":"` + email + `","NombreTarjeta":"` + nombreUsuario + `","CursosComprado":"` + cadenaConcatenada + `"}`;
+
+            var jsonPostBack = jQuery.parseJSON(enviarPostBack);
+
+
+
+
+            //console.log(enviarPostBack);
+
+            //$.ajax({
+            //    type: "POST",
+            //    url: "https://localhost:44370/api/compradores",
+            //    data: JSON.stringify(jsonPostBack),
+            //    success: function (datosRetorno) { console.log(datosRetorno); },
+            //}).done(function () {
+            //    alert('Se ha enviado un correo con la confimacion de la compra realizada');
+            //});
+
+            fetch('https://localhost:44370/api/compradores',
+                {
+                    method: 'POST',
+                    body: JSON.stringify(
+                        {
+                            Correo: email,
+                            NombreTarjeta: nombreUsuario,
+                            CursosComprado: cadenaConcatenada
+                        }),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                }
+            ).then(
+                function (respuesta) {
+                    if (respuesta.ok) {
+                        return respuesta.text + '';
+                    } else {
+                        alert('No se ha realizado el envio al mail');
+                    }
+                }
+            ).then(function (datos) { alert('Se le ha enviado un correo con la informacion de la compra') });
+        }
+      
+    });
 
 
 
